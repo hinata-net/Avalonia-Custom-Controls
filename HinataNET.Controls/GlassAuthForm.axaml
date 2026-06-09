@@ -1,0 +1,418 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HinataNET.Controls.GlassAuthForm"
+             x:CompileBindings="False">
+
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="BrandPrimary" Color="#818CF8" />
+        <SolidColorBrush x:Key="BrandAccent" Color="#6366F1" />
+        <LinearGradientBrush x:Key="BrandGradient" StartPoint="0%,0%" EndPoint="100%,0%">
+            <GradientStop Offset="0" Color="#8B5CF6" />
+            <GradientStop Offset="1" Color="#6366F1" />
+        </LinearGradientBrush>
+
+        <SolidColorBrush x:Key="ErrorColor" Color="#F43F5E" />
+
+        <SolidColorBrush x:Key="GlassBase" Color="#0AFFFFFF" />
+        <SolidColorBrush x:Key="GlassHover" Color="#15FFFFFF" />
+        <SolidColorBrush x:Key="GlassBorder" Color="#20FFFFFF" />
+        <SolidColorBrush x:Key="GlassBorderHover" Color="#40FFFFFF" />
+        <SolidColorBrush x:Key="GlassIcon" Color="#60FFFFFF" />
+
+        <SolidColorBrush x:Key="TextPrimary" Color="White" />
+        <SolidColorBrush x:Key="TextSecondary" Color="#A0FFFFFF" />
+        <SolidColorBrush x:Key="TextMuted" Color="#50FFFFFF" />
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="{DynamicResource GlassBase}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource GlassBorder}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+            <Setter Property="CaretBrush" Value="{DynamicResource BrandPrimary}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.3" />
+                    <BrushTransition Property="Background" Duration="0:0:0.3" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource GlassHover}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource GlassBorderHover}" />
+        </Style>
+
+        <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource GlassBase}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BrandPrimary}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BoxShadow" Value="0 0 0 0 Transparent" />
+        </Style>
+
+        <Style Selector="TextBox.ErrorState">
+            <Setter Property="BorderBrush" Value="{DynamicResource ErrorColor}" />
+        </Style>
+
+        <Style Selector="TextBox.ErrorState:focus /template/ Border#PART_BorderElement">
+            <Setter Property="BorderBrush" Value="{DynamicResource ErrorColor}" />
+        </Style>
+
+        <Style Selector="PathIcon.InputIcon">
+            <Setter Property="Width" Value="18" />
+            <Setter Property="Height" Value="18" />
+            <Setter Property="Margin" Value="15,0,10,0" />
+            <Setter Property="Foreground" Value="{DynamicResource GlassIcon}" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Foreground" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="TextBox:focus PathIcon.InputIcon">
+            <Setter Property="Foreground" Value="{DynamicResource BrandPrimary}" />
+        </Style>
+
+        <Style Selector="CheckBox">
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid ColumnDefinitions="Auto, *">
+                        <Border Name="PART_Border"
+                                Width="20"
+                                Height="20"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource GlassBase}"
+                                BorderBrush="#30FFFFFF"
+                                BorderThickness="1"
+                                CornerRadius="6">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <BrushTransition Property="Background" Duration="0:0:0.2" />
+                                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2" />
+                                </Transitions>
+                            </Border.Transitions>
+                            <Path Name="PART_CheckGlyph"
+                                  Width="12"
+                                  Height="12"
+                                  Fill="{DynamicResource TextPrimary}"
+                                  Opacity="0"
+                                  Data="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41-1.41z"
+                                  Stretch="Uniform"
+                                  RenderTransform="scale(0.5)">
+                                <Path.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                                        <TransformOperationsTransition Property="RenderTransform"
+                                                                       Duration="0:0:0.2"
+                                                                       Easing="CubicEaseOut" />
+                                    </Transitions>
+                                </Path.Transitions>
+                            </Path>
+                        </Border>
+                        <ContentPresenter Grid.Column="1"
+                                          Margin="10,0,0,0"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="CheckBox:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource GlassHover}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource GlassBorderHover}" />
+        </Style>
+        <Style Selector="CheckBox:checked /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource BrandAccent}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BrandAccent}" />
+        </Style>
+        <Style Selector="CheckBox:checked /template/ Path#PART_CheckGlyph">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="RenderTransform" Value="scale(1)" />
+        </Style>
+        <Style Selector="CheckBox:checked:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource BrandPrimary}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BrandPrimary}" />
+        </Style>
+
+        <Style Selector="Button.ActionBtn">
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="ClipToBounds" Value="False" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel Background="Transparent">
+                        <Border Name="GlowBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                RenderTransform="none"
+                                BoxShadow="0 4 10 -2 #306366F1">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform"
+                                                                   Duration="0:0:0.25"
+                                                                   Easing="CubicEaseOut" />
+                                    <BoxShadowsTransition Property="BoxShadow"
+                                                          Duration="0:0:0.3"
+                                                          Easing="CubicEaseOut" />
+                                </Transitions>
+                            </Border.Transitions>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="Button.ActionBtn:pointerover /template/ Border#GlowBorder">
+            <Setter Property="RenderTransform" Value="translateY(-2px)" />
+            <Setter Property="BoxShadow" Value="0 8 16 -1 #606366F1" />
+        </Style>
+        <Style Selector="Button.ActionBtn:pressed /template/ Border#GlowBorder">
+            <Setter Property="RenderTransform" Value="translateY(1px)" />
+            <Setter Property="BoxShadow" Value="0 2 6 -1 #406366F1" />
+        </Style>
+        <Style Selector="Button.ActionBtn:disabled /template/ Border#GlowBorder">
+            <Setter Property="Opacity" Value="0.3" />
+            <Setter Property="BoxShadow" Value="0 0 0 0 Transparent" />
+        </Style>
+
+        <Style Selector="Button.SocialBtn">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="ClipToBounds" Value="False" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel Background="Transparent">
+                        <Border Name="VisualBorder"
+                                Height="50"
+                                Background="{DynamicResource GlassBase}"
+                                BorderBrush="#1AFFFFFF"
+                                BorderThickness="1"
+                                CornerRadius="12"
+                                RenderTransform="none">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform"
+                                                                   Duration="0:0:0.2"
+                                                                   Easing="CubicEaseOut" />
+                                    <BrushTransition Property="Background" Duration="0:0:0.2" />
+                                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2" />
+                                </Transitions>
+                            </Border.Transitions>
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="Button.SocialBtn:pointerover /template/ Border#VisualBorder">
+            <Setter Property="RenderTransform" Value="translateY(-3px)" />
+            <Setter Property="Background" Value="{DynamicResource GlassHover}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource GlassBorderHover}" />
+        </Style>
+    </UserControl.Styles>
+
+    <Border Width="440"
+            CornerRadius="24"
+            ClipToBounds="True"
+            BoxShadow="0 40 80 0 #A0000000, inset 0 1 1 0 #50FFFFFF, inset 0 -1 -1 0 #0AFFFFFF">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                <GradientStop Offset="0" Color="#15FFFFFF" />
+                <GradientStop Offset="1" Color="#03FFFFFF" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                <GradientStop Offset="0" Color="#70FFFFFF" />
+                <GradientStop Offset="0.3" Color="#10FFFFFF" />
+                <GradientStop Offset="1" Color="#20FFFFFF" />
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.BorderThickness>
+            <Thickness>1</Thickness>
+        </Border.BorderThickness>
+
+        <Panel>
+            <Border CornerRadius="24">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Offset="0" Color="#25FFFFFF" />
+                        <GradientStop Offset="0.25" Color="Transparent" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <StackPanel Margin="40,45">
+                <TextBlock HorizontalAlignment="Center"
+                           Foreground="{DynamicResource TextPrimary}"
+                           FontSize="24"
+                           FontWeight="Black"
+                           Text="CREATE ACCOUNT"
+                           LetterSpacing="1.5" />
+                <TextBlock Margin="0,5,0,25"
+                           HorizontalAlignment="Center"
+                           Foreground="{DynamicResource TextSecondary}"
+                           FontSize="13"
+                           FontWeight="Medium"
+                           Text="Join us and start your journey today" />
+
+                <Grid Height="70">
+                    <TextBox VerticalAlignment="Top"
+                             Text="{Binding Username}"
+                             Classes.ErrorState="{Binding HasUsernameError}"
+                             Watermark="Username"
+                             UseFloatingWatermark="False">
+                        <TextBox.InnerLeftContent>
+                            <PathIcon Classes="InputIcon" Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                        </TextBox.InnerLeftContent>
+                    </TextBox>
+                    <TextBlock Margin="15,0,0,4"
+                               VerticalAlignment="Bottom"
+                               Foreground="{DynamicResource ErrorColor}"
+                               FontSize="11"
+                               FontWeight="Medium"
+                               Text="{Binding UsernameErrorMessage}"
+                               IsVisible="{Binding HasUsernameError}" />
+                </Grid>
+
+                <Grid Height="70">
+                    <TextBox VerticalAlignment="Top"
+                             Text="{Binding Email}"
+                             Classes.ErrorState="{Binding HasEmailError}"
+                             Watermark="Email"
+                             UseFloatingWatermark="False">
+                        <TextBox.InnerLeftContent>
+                            <PathIcon Classes="InputIcon" Data="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+                        </TextBox.InnerLeftContent>
+                    </TextBox>
+                    <TextBlock Margin="15,0,0,4"
+                               VerticalAlignment="Bottom"
+                               Foreground="{DynamicResource ErrorColor}"
+                               FontSize="11"
+                               FontWeight="Medium"
+                               Text="{Binding EmailErrorMessage}"
+                               IsVisible="{Binding HasEmailError}" />
+                </Grid>
+
+                <Grid Height="70">
+                    <TextBox VerticalAlignment="Top"
+                             Text="{Binding Password}"
+                             Classes.ErrorState="{Binding HasPasswordError}"
+                             Watermark="Password"
+                             PasswordChar="•"
+                             UseFloatingWatermark="False">
+                        <TextBox.InnerLeftContent>
+                            <PathIcon Classes="InputIcon" Data="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
+                        </TextBox.InnerLeftContent>
+                    </TextBox>
+                    <TextBlock Margin="15,0,0,4"
+                               VerticalAlignment="Bottom"
+                               Foreground="{DynamicResource ErrorColor}"
+                               FontSize="11"
+                               FontWeight="Medium"
+                               Text="{Binding PasswordErrorMessage}"
+                               IsVisible="{Binding HasPasswordError}" />
+                </Grid>
+
+                <Grid Height="70">
+                    <TextBox VerticalAlignment="Top"
+                             Text="{Binding ConfirmPassword}"
+                             Classes.ErrorState="{Binding HasConfirmPasswordError}"
+                             Watermark="Confirm password"
+                             PasswordChar="•"
+                             UseFloatingWatermark="False">
+                        <TextBox.InnerLeftContent>
+                            <PathIcon Classes="InputIcon" Data="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
+                        </TextBox.InnerLeftContent>
+                    </TextBox>
+                    <TextBlock Margin="15,0,0,4"
+                               VerticalAlignment="Bottom"
+                               Foreground="{DynamicResource ErrorColor}"
+                               FontSize="11"
+                               FontWeight="Medium"
+                               Text="{Binding ConfirmPasswordErrorMessage}"
+                               IsVisible="{Binding HasConfirmPasswordError}" />
+                </Grid>
+
+                <CheckBox Margin="5,0,0,20"
+                          Content="I agree to the Terms &amp; Conditions"
+                          IsChecked="{Binding IsTermsAccepted}" />
+
+                <Button Classes="ActionBtn"
+                        Margin="0,0,0,25"
+                        Command="{Binding RegisterCommand}">
+                    <Button.Background>
+                        <StaticResource ResourceKey="BrandGradient" />
+                    </Button.Background>
+                    <TextBlock Foreground="{DynamicResource TextPrimary}"
+                               FontWeight="Bold"
+                               Text="SIGN UP"
+                               LetterSpacing="2" />
+                </Button>
+
+                <Grid Margin="0,0,0,20" ColumnDefinitions="*, Auto, *">
+                    <Border Height="1"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource GlassBorder}" />
+                    <TextBlock Grid.Column="1"
+                               Margin="15,0"
+                               Foreground="{DynamicResource TextMuted}"
+                               FontSize="11"
+                               FontWeight="Bold"
+                               Text="OR SIGN UP WITH"
+                               LetterSpacing="1" />
+                    <Border Grid.Column="2"
+                            Height="1"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource GlassBorder}" />
+                </Grid>
+
+                <Grid Margin="0,0,0,25" ColumnDefinitions="*, 15, *, 15, *">
+                    <Button Classes="SocialBtn" Grid.Column="0">
+                        <Viewbox Width="20" Height="20">
+                            <Path Fill="{DynamicResource TextPrimary}" Data="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z" />
+                        </Viewbox>
+                    </Button>
+                    <Button Classes="SocialBtn" Grid.Column="2">
+                        <Viewbox Width="20" Height="20">
+                            <Path Fill="{DynamicResource TextPrimary}" Data="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.09,22C7.78,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
+                        </Viewbox>
+                    </Button>
+                    <Button Classes="SocialBtn" Grid.Column="4">
+                        <Viewbox Width="22" Height="22">
+                            <Path Fill="{DynamicResource TextPrimary}" Data="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.286 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </Viewbox>
+                    </Button>
+                </Grid>
+
+                <TextBlock HorizontalAlignment="Center"
+                           Foreground="{DynamicResource TextMuted}"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           Cursor="Hand">
+                    <Run Text="ALREADY HAVE AN ACCOUNT? " />
+                    <Run Foreground="{DynamicResource BrandPrimary}"
+                         FontWeight="Bold"
+                         Text="LOGIN" />
+                </TextBlock>
+            </StackPanel>
+        </Panel>
+    </Border>
+</UserControl>

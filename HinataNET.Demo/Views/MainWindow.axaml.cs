@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace HinataNET.UI.GlassAuth
+namespace HinataNET.Demo.Views
 {
     public partial class MainWindow : Window
     {

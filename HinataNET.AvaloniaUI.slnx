@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="HinataNET.UI.GlassAuth/HinataNET.UI.GlassAuth.csproj" />
+  <Project Path="HinataNET.Controls/HinataNET.Controls.csproj" Id="31e6434e-4db7-4b2f-a613-4bc839cc12c6" />
+  <Project Path="HinataNET.Demo/HinataNET.Demo.csproj" Id="b2e3ecae-cba6-49aa-9fba-abe425bb6596" />
+  <Project Path="HinataNET.Viewport/HinataNET.Viewport.csproj" Id="a11b63f1-ad0d-4b8f-98e3-a9d2f6de7b72" />
 </Solution>
