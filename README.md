@@ -35,4 +35,4 @@ Join the community to track updates and suggest ideas for new controls:
 
 ## License
 
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/). You are free to use this code in both personal and commercial projects.
+This project is licensed under the [MIT License](https://github.com/hinata-net/Avalonia-Custom-Controls?tab=MIT-1-ov-file). You are free to use this code in both personal and commercial projects.
