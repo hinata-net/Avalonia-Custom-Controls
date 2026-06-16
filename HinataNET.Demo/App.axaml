@@ -11,8 +11,11 @@
     </Application.Styles>
 
     <Application.DataTemplates>
-        <DataTemplate DataType="vm:GlassAuthPageViewModel">
+        <DataTemplate DataType="{x:Type vm:GlassAuthPageViewModel}">
             <views:GlassAuthPageView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ExpandingSearchBarPageViewModel}">
+            <views:ExpandingSearchBarPageView />
         </DataTemplate>
     </Application.DataTemplates>
 </Application>

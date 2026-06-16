@@ -7,7 +7,8 @@ namespace HinataNET.Demo.ViewModels
     {
         public ObservableCollection<IPageViewModel> Pages { get; } = new()
         {
-            new GlassAuthPageViewModel()
+            new GlassAuthPageViewModel(),
+            new ExpandingSearchBarPageViewModel()
         };
 
         [ObservableProperty]

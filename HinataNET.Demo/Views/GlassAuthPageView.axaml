@@ -59,7 +59,7 @@
 
         <Panel IsHitTestVisible="False">
             <Panel.Background>
-                <RadialGradientBrush Center="50%,50%" Radius="1.2">
+                <RadialGradientBrush Center="50%,50%" RadiusX="120%" RadiusY="120%">
                     <GradientStop Offset="0" Color="#00050508" />
                     <GradientStop Offset="1" Color="#FF050508" />
                 </RadialGradientBrush>

@@ -1,0 +1,113 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HinataNET.Controls.ExpandingSearchBar">
+
+    <UserControl.Styles>
+        <Style Selector="ToggleButton.searchBar">
+            <Setter Property="Width" Value="44" />
+            <Setter Property="Height" Value="44" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Width"
+                                      Duration="0:0:0.35"
+                                      Easing="CubicEaseOut" />
+                </Transitions>
+            </Setter>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Name="Container"
+                            Background="#2C2C2E"
+                            BorderBrush="Transparent"
+                            BorderThickness="1"
+                            CornerRadius="22"
+                            RenderTransform="none"
+                            BoxShadow="0 4 10 0 #40000000">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background" Duration="0:0:0.2" />
+                                <BrushTransition Property="BorderBrush" Duration="0:0:0.2" />
+                                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <Grid>
+                            <Path Name="SearchIcon"
+                                  Width="18"
+                                  Height="18"
+                                  Margin="13,0,0,0"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Center"
+                                  Fill="#A0A0A5"
+                                  Data="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                                  Stretch="Uniform">
+                                <Path.Transitions>
+                                    <Transitions>
+                                        <BrushTransition Property="Fill" Duration="0:0:0.3" />
+                                    </Transitions>
+                                </Path.Transitions>
+                            </Path>
+                            <TextBox Name="InputBox"
+                                     Margin="44,0,16,0"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Background="Transparent"
+                                     Foreground="White"
+                                     BorderThickness="0"
+                                     Opacity="0"
+                                     FontSize="14"
+                                     PlaceholderText="Search..."
+                                     CaretBrush="White"
+                                     IsHitTestVisible="False">
+                                <TextBox.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.15" />
+                                    </Transitions>
+                                </TextBox.Transitions>
+                            </TextBox>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="ToggleButton.searchBar:checked">
+            <Setter Property="Width" Value="250" />
+        </Style>
+
+        <Style Selector="ToggleButton.searchBar:checked /template/ Path#SearchIcon">
+            <Setter Property="Fill" Value="White" />
+        </Style>
+
+        <Style Selector="ToggleButton.searchBar:checked /template/ TextBox#InputBox">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="IsHitTestVisible" Value="True" />
+        </Style>
+
+        <Style Selector="ToggleButton.searchBar:not(:checked):pointerover /template/ Border#Container">
+            <Setter Property="Background" Value="#3A3A3C" />
+        </Style>
+
+        <Style Selector="ToggleButton.searchBar:not(:checked):pressed /template/ Border#Container">
+            <Setter Property="RenderTransform" Value="scale(0.92)" />
+            <Setter Property="Background" Value="#454548" />
+        </Style>
+
+        <Style Selector="ToggleButton.searchBar:checked:focus-within /template/ Border#Container">
+            <Setter Property="BorderBrush" Value="#4F46E5" />
+        </Style>
+
+        <Style Selector="ToggleButton.searchBar /template/ TextBox#InputBox:pointerover /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style Selector="ToggleButton.searchBar /template/ TextBox#InputBox:focus /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </UserControl.Styles>
+
+    <ToggleButton Name="MainButton"
+                  Classes="searchBar"
+                  IsCheckedChanged="MainButton_OnChecked" />
+</UserControl>
