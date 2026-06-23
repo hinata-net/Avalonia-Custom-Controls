@@ -1,0 +1,9 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HinataNET.Demo.Views.SlideToActionPageView"
+             xmlns:controls="using:HinataNET.Controls">
+
+    <Grid Background="#0A0A0A">
+        <controls:SlideToAction HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+</UserControl>

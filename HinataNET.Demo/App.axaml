@@ -17,5 +17,8 @@
         <DataTemplate DataType="{x:Type vm:ExpandingSearchBarPageViewModel}">
             <views:ExpandingSearchBarPageView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SlideToActionPageViewModel}">
+            <views:SlideToActionPageView />
+        </DataTemplate>
     </Application.DataTemplates>
 </Application>

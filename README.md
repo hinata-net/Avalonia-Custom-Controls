@@ -13,6 +13,7 @@ The project is divided into two main parts:
 Currently, the library includes:
 * **Glass Auth Form** — An authentication form with a Frosted Glass effect.
 * **Expandable Search Bar** — A sleek, minimalist search component with a smooth expanding animation and auto-focus handling.
+* **Slide-to-Action** — A custom slider for confirming critical actions.
 
 *(The list is growing. New controls are released weekly).*
 

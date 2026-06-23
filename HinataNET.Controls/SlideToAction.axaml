@@ -1,0 +1,169 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HinataNET.Controls.SlideToAction">
+
+    <UserControl.Styles>
+        <Style Selector="Thumb.animating">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <ThicknessTransition Property="Margin" Duration="0:0:0.2">
+                        <ThicknessTransition.Easing>
+                            <CubicEaseOut />
+                        </ThicknessTransition.Easing>
+                    </ThicknessTransition>
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Border.animating">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Width" Duration="0:0:0.2">
+                        <DoubleTransition.Easing>
+                            <CubicEaseOut />
+                        </DoubleTransition.Easing>
+                    </DoubleTransition>
+                    <BrushTransition Property="Background" Duration="0:0:0.3" />
+                    <BoxShadowsTransition Property="BoxShadow"
+                                          Duration="0:0:0.3"
+                                          Easing="CubicEaseOut" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Border#FillBorder">
+            <Setter Property="Background" Value="#6366F1" />
+            <Setter Property="BoxShadow" Value="0 0 0 0 Transparent" />
+        </Style>
+
+        <Style Selector="Border#FillBorder.success">
+            <Setter Property="Background" Value="#10B981" />
+            <Setter Property="BoxShadow" Value="0 0 20 0 #6010B981" />
+        </Style>
+
+        <Style Selector="Thumb.success /template/ Path#ArrowIcon">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="RenderTransform" Value="scale(0.5)" />
+        </Style>
+
+        <Style Selector="Thumb.success /template/ Path#CheckIcon">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="RenderTransform" Value="scale(1)" />
+        </Style>
+    </UserControl.Styles>
+
+    <Border Padding="25" Background="Transparent">
+        <Grid Width="320"
+              Height="64"
+              Background="Transparent">
+
+            <Border Background="#1C1C1E"
+                    BorderBrush="#2C2C2E"
+                    BorderThickness="1"
+                    CornerRadius="32"
+                    BoxShadow="inset 0 4 10 0 #20000000" />
+
+
+            <TextBlock x:Name="HintText"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="#707075"
+                       FontSize="15"
+                       FontWeight="SemiBold"
+                       Text="Slide to unlock"
+                       LetterSpacing="0.5"
+                       IsHitTestVisible="False">
+                <TextBlock.Transitions>
+                    <Transitions>
+                        <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                    </Transitions>
+                </TextBlock.Transitions>
+            </TextBlock>
+
+            <Border x:Name="FillBorder"
+                    Classes="animating"
+                    Width="64"
+                    HorizontalAlignment="Left"
+                    CornerRadius="32"
+                    IsHitTestVisible="False" />
+
+            <TextBlock x:Name="SuccessText"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="White"
+                       Opacity="0"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       Text="UNLOCKED"
+                       LetterSpacing="1"
+                       IsVisible="False"
+                       IsHitTestVisible="False">
+                <TextBlock.Transitions>
+                    <Transitions>
+                        <DoubleTransition Property="Opacity" Duration="0:0:0.3" />
+                    </Transitions>
+                </TextBlock.Transitions>
+            </TextBlock>
+
+            <Thumb x:Name="SliderThumb"
+                   Classes="animating"
+                   Width="52"
+                   Height="52"
+                   Margin="6,0,0,0"
+                   HorizontalAlignment="Left"
+                   Background="White"
+                   CornerRadius="26"
+                   Cursor="Hand">
+                <Thumb.Template>
+                    <ControlTemplate>
+                        <Border Background="{TemplateBinding Background}" CornerRadius="26">
+                            <Panel>
+                                <Path x:Name="ArrowIcon"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Fill="Transparent"
+                                      Stroke="#1C1C1E"
+                                      StrokeThickness="2"
+                                      Data="M 0 0 L 6 6 L 0 12"
+                                      StrokeLineCap="Round"
+                                      StrokeJoin="Round">
+                                    <Path.Transitions>
+                                        <Transitions>
+                                            <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                                            <TransformOperationsTransition Property="RenderTransform"
+                                                                           Duration="0:0:0.2"
+                                                                           Easing="CubicEaseOut" />
+                                        </Transitions>
+                                    </Path.Transitions>
+                                </Path>
+
+                                <Path x:Name="CheckIcon"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Fill="Transparent"
+                                      Stroke="#10B981"
+                                      StrokeThickness="2.5"
+                                      Opacity="0"
+                                      Data="M 0 5 L 4 9 L 12 1"
+                                      StrokeLineCap="Round"
+                                      StrokeJoin="Round"
+                                      RenderTransform="scale(0.5)">
+                                    <Path.Transitions>
+                                        <Transitions>
+                                            <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                                            <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.4">
+                                                <TransformOperationsTransition.Easing>
+                                                    <BackEaseOut />
+                                                </TransformOperationsTransition.Easing>
+                                            </TransformOperationsTransition>
+                                        </Transitions>
+                                    </Path.Transitions>
+                                </Path>
+                            </Panel>
+                        </Border>
+                    </ControlTemplate>
+                </Thumb.Template>
+            </Thumb>
+        </Grid>
+    </Border>
+</UserControl>
