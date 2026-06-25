@@ -20,5 +20,8 @@
         <DataTemplate DataType="{x:Type vm:SlideToActionPageViewModel}">
             <views:SlideToActionPageView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PasswordStrengthMeterPageViewModel}">
+            <views:PasswordStrengthMeterPageView />
+        </DataTemplate>
     </Application.DataTemplates>
 </Application>

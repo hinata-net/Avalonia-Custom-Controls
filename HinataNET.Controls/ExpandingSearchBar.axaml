@@ -83,6 +83,11 @@
             <Setter Property="IsHitTestVisible" Value="True" />
         </Style>
 
+        <Style Selector="ToggleButton.searchBar /template/ TextBox#InputBox">
+            <Setter Property="SelectionBrush" Value="#806366F1" />
+            <Setter Property="SelectionForegroundBrush" Value="White" />
+        </Style>
+
         <Style Selector="ToggleButton.searchBar:not(:checked):pointerover /template/ Border#Container">
             <Setter Property="Background" Value="#3A3A3C" />
         </Style>

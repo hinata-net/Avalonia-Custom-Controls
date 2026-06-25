@@ -7,7 +7,7 @@
         Background="#0A0A0A"
         xmlns:vm="using:HinataNET.Demo.ViewModels"
         WindowStartupLocation="CenterScreen"
-        Title="HinataNET - Premium UI">
+        Title="HinataNET - Open Source Premium UI Library">
 
     <Grid ColumnDefinitions="260, *">
 
