@@ -31,7 +31,19 @@
             </Panel.Background>
         </Panel>
 
-        <Border Padding="40" ClipToBounds="False" />
+        <Border Padding="40" ClipToBounds="False">
 
+            <controls:GlassProfileCard HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       UserName="Dmitriy Buyko"
+                                       Rating="4.9"
+                                       ShotsCount="123"
+                                       FollowersCount="456"
+                                       UserRole="Student, Junior UI/UX Engineer"
+                                       IsFollowing="{Binding IsFollowing}"
+                                       IsMessageSent="{Binding IsMessageSent}"
+                                       FollowCommand="{Binding ToggleFollowCommand}"
+                                       MessageCommand="{Binding SendMessageCommand}" />
+        </Border>
     </Panel>
 </UserControl>
