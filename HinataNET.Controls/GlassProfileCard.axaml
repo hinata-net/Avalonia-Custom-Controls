@@ -1,0 +1,370 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HinataNET.Controls.GlassProfileCard"
+             x:CompileBindings="False"
+             x:Name="Root"
+             xmlns:controls="using:HinataNET.Controls"
+             ClipToBounds="False">
+
+    <Design.PreviewWith>
+        <Border Padding="60" Background="#05050A">
+            <controls:GlassProfileCard UserName="Alex Carter"
+                                UserRole="Lead UI/UX Engineer"
+                                ShotsCount="124"
+                                FollowersCount="12.4k"
+                                Rating="4.9" />
+        </Border>
+    </Design.PreviewWith>
+
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="GlassBackground" StartPoint="0%,0%" EndPoint="100%,100%">
+            <GradientStop Offset="0" Color="#2AFFFFFF" />
+            <GradientStop Offset="0.5" Color="#0AFFFFFF" />
+            <GradientStop Offset="1" Color="#15FFFFFF" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GlassBorder" StartPoint="0%,0%" EndPoint="100%,100%">
+            <GradientStop Offset="0" Color="#60FFFFFF" />
+            <GradientStop Offset="0.3" Color="#10FFFFFF" />
+            <GradientStop Offset="1" Color="#20FFFFFF" />
+        </LinearGradientBrush>
+
+        <SolidColorBrush x:Key="PrimaryBase" Color="#4F46E5" />
+        <SolidColorBrush x:Key="PrimaryHover" Color="#6366F1" />
+        <SolidColorBrush x:Key="PrimaryPressed" Color="#4338CA" />
+
+        <SolidColorBrush x:Key="SuccessBase" Color="#059669" />
+        <SolidColorBrush x:Key="SuccessHover" Color="#10B981" />
+        <SolidColorBrush x:Key="SuccessPressed" Color="#047857" />
+
+        <SolidColorBrush x:Key="SecondaryBase" Color="#1AFFFFFF" />
+        <SolidColorBrush x:Key="SecondaryHover" Color="#2FFFFFFF" />
+        <SolidColorBrush x:Key="SecondaryPressed" Color="#0DFFFFFF" />
+        <SolidColorBrush x:Key="SecondaryBorder" Color="#30FFFFFF" />
+
+        <SolidColorBrush x:Key="TextPrimary" Color="White" />
+        <SolidColorBrush x:Key="TextSecondary" Color="#A0FFFFFF" />
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="Border.GlassContainer">
+            <Setter Property="Background" Value="{DynamicResource GlassBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource GlassBorder}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="24" />
+            <Setter Property="BoxShadow" Value="0 15 40 -10 #60000000" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform"
+                                                   Duration="0:0:0.4"
+                                                   Easing="CubicEaseOut" />
+                    <BoxShadowsTransition Property="BoxShadow"
+                                          Duration="0:0:0.4"
+                                          Easing="CubicEaseOut" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Border.CardWrapper:pointerover Border.GlassContainer">
+            <Setter Property="RenderTransform" Value="translateY(-12px)" />
+            <Setter Property="BoxShadow" Value="0 30 60 -10 #80000000" />
+        </Style>
+
+        <Style Selector="Button.PrimaryBtn">
+            <Setter Property="Content" Value="Follow" />
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="0,10" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform"
+                                                   Duration="0:0:0.25"
+                                                   Easing="CubicEaseInOut" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.PrimaryBtn /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource PrimaryBase}" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background"
+                                     Duration="0:0:0.3"
+                                     Easing="CubicEaseInOut" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.PrimaryBtn:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.03)" />
+        </Style>
+        <Style Selector="Button.PrimaryBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource PrimaryHover}" />
+        </Style>
+        <Style Selector="Button.PrimaryBtn:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.97)" />
+        </Style>
+        <Style Selector="Button.PrimaryBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource PrimaryPressed}" />
+        </Style>
+
+        <Style Selector="Button.PrimaryBtn.following">
+            <Setter Property="Content" Value="Following" />
+        </Style>
+        <Style Selector="Button.PrimaryBtn.following /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SuccessBase}" />
+        </Style>
+        <Style Selector="Button.PrimaryBtn.following:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.03)" />
+        </Style>
+        <Style Selector="Button.PrimaryBtn.following:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SuccessHover}" />
+        </Style>
+        <Style Selector="Button.PrimaryBtn.following:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.97)" />
+        </Style>
+        <Style Selector="Button.PrimaryBtn.following:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SuccessPressed}" />
+        </Style>
+
+        <Style Selector="Button.SecondaryBtn">
+            <Setter Property="Content" Value="Message" />
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="0,10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform"
+                                                   Duration="0:0:0.25"
+                                                   Easing="CubicEaseInOut" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.SecondaryBtn /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SecondaryBase}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorder}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background"
+                                     Duration="0:0:0.3"
+                                     Easing="CubicEaseInOut" />
+                    <BrushTransition Property="BorderBrush"
+                                     Duration="0:0:0.3"
+                                     Easing="CubicEaseInOut" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.SecondaryBtn:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.03)" />
+        </Style>
+        <Style Selector="Button.SecondaryBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SecondaryHover}" />
+            <Setter Property="BorderBrush" Value="#45FFFFFF" />
+        </Style>
+        <Style Selector="Button.SecondaryBtn:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.97)" />
+        </Style>
+        <Style Selector="Button.SecondaryBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SecondaryPressed}" />
+            <Setter Property="BorderBrush" Value="#20FFFFFF" />
+        </Style>
+
+        <Style Selector="Button.SecondaryBtn.sent">
+            <Setter Property="Content" Value="Sent!" />
+        </Style>
+        <Style Selector="Button.SecondaryBtn.sent /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SuccessBase}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SuccessBase}" />
+        </Style>
+        <Style Selector="Button.SecondaryBtn.sent:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.03)" />
+        </Style>
+        <Style Selector="Button.SecondaryBtn.sent:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SuccessHover}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SuccessHover}" />
+        </Style>
+        <Style Selector="Button.SecondaryBtn.sent:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.97)" />
+        </Style>
+        <Style Selector="Button.SecondaryBtn.sent:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SuccessPressed}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SuccessPressed}" />
+        </Style>
+
+        <Style Selector="Button.IconBtn">
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform"
+                                                   Duration="0:0:0.25"
+                                                   Easing="CubicEaseInOut" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.IconBtn /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background"
+                                     Duration="0:0:0.2"
+                                     Easing="CubicEaseInOut" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.IconBtn:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.05)" />
+        </Style>
+        <Style Selector="Button.IconBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SecondaryBase}" />
+        </Style>
+        <Style Selector="Button.IconBtn:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.95)" />
+        </Style>
+        <Style Selector="Button.IconBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SecondaryHover}" />
+        </Style>
+    </UserControl.Styles>
+
+    <Border Classes="CardWrapper"
+            Padding="0"
+            Background="Transparent"
+            ClipToBounds="False">
+        <Border Classes="GlassContainer"
+                Width="320"
+                ClipToBounds="False">
+            <Border CornerRadius="24" ClipToBounds="True">
+                <Panel>
+                    <Border Height="100"
+                            VerticalAlignment="Top"
+                            Opacity="0.15">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                <GradientStop Offset="0" Color="#6366F1" />
+                                <GradientStop Offset="1" Color="Transparent" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+
+                    <StackPanel Margin="24,32,24,24">
+                        <Grid Margin="0,0,0,16" ColumnDefinitions="*, Auto">
+                            <Border Padding="8,4"
+                                    HorizontalAlignment="Left"
+                                    Background="#2010B981"
+                                    BorderBrush="#4010B981"
+                                    BorderThickness="1"
+                                    CornerRadius="8">
+                                <StackPanel VerticalAlignment="Center"
+                                            Orientation="Horizontal"
+                                            Spacing="6">
+                                    <Ellipse Width="6"
+                                             Height="6"
+                                             VerticalAlignment="Center"
+                                             Fill="#10B981" />
+                                    <TextBlock VerticalAlignment="Center"
+                                               Foreground="#10B981"
+                                               FontSize="10"
+                                               FontWeight="Bold"
+                                               Text="ONLINE" />
+                                </StackPanel>
+                            </Border>
+
+                            <Button Classes="IconBtn"
+                                    Grid.Column="1"
+                                    Width="32"
+                                    Height="32"
+                                    Padding="0"
+                                    ToolTip.Tip="Share Profile">
+                                <PathIcon Width="16"
+                                          Height="16"
+                                          Foreground="{DynamicResource TextSecondary}"
+                                          Data="M 18,16.08 C 17.24,16.08 16.56,16.38 16.04,16.85 L 8.91,12.7 C 8.96,12.47 9,12.24 9,11.76 S 8.96,11.53 8.91,11.3 L 15.96,7.19 C 16.5,7.69 17.21,8 18,8 A 3,3 0 0,0 21,5 A 3,3 0 0,0 18,2 A 3,3 0 0,0 15,5 C 15,5.24 15.04,5.47 15.09,5.7 L 8.04,9.81 C 7.5,9.31 6.79,9 6,9 A 3,3 0 0,0 3,12 A 3,3 0 0,0 6,15 C 6.79,15 7.5,14.69 8.04,14.19 L 15.16,18.34 C 15.11,18.55 15.08,18.77 15.08,19 C 15.08,20.61 16.39,21.92 18,21.92 C 19.61,21.92 20.92,20.61 20.92,19 C 20.92,17.39 19.61,16.08 18,16.08 Z" />
+                            </Button>
+                        </Grid>
+
+                        <Border Width="80"
+                                Height="80"
+                                Margin="0,0,0,16"
+                                HorizontalAlignment="Center"
+                                Background="{DynamicResource SecondaryBase}"
+                                BorderBrush="{DynamicResource SecondaryBorder}"
+                                BorderThickness="1"
+                                CornerRadius="40"
+                                BoxShadow="0 8 20 0 #30000000">
+                            <PathIcon Width="40"
+                                      Height="40"
+                                      Foreground="#E0E0E0"
+                                      Data="M 12,4 A 4,4 0 0,1 16,8 A 4,4 0 0,1 12,12 A 4,4 0 0,1 8,8 A 4,4 0 0,1 12,4 M 12,14 C 16.42,14 20,15.79 20,18 V 20 H 4 V 18 C 4,15.79 7.58,14 12,14 Z" />
+                        </Border>
+
+                        <TextBlock HorizontalAlignment="Center"
+                                   Foreground="{DynamicResource TextPrimary}"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Text="{Binding UserName, ElementName=Root}" />
+                        <TextBlock Margin="0,2,0,24"
+                                   HorizontalAlignment="Center"
+                                   Foreground="{DynamicResource TextSecondary}"
+                                   FontSize="13"
+                                   FontWeight="Medium"
+                                   Text="{Binding UserRole, ElementName=Root}" />
+
+                        <Grid Margin="0,0,0,24" ColumnDefinitions="*, *, *">
+                            <StackPanel Grid.Column="0">
+                                <TextBlock HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource TextPrimary}"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           Text="{Binding ShotsCount, ElementName=Root}" />
+                                <TextBlock HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           FontSize="11"
+                                           Text="Shots" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource TextPrimary}"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           Text="{Binding FollowersCount, ElementName=Root}" />
+                                <TextBlock HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           FontSize="11"
+                                           Text="Followers" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource TextPrimary}"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           Text="{Binding Rating, ElementName=Root}" />
+                                <TextBlock HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           FontSize="11"
+                                           Text="Rating" />
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*, 12, *">
+                            <Button Classes="PrimaryBtn"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    Command="{Binding FollowCommand, ElementName=Root}"
+                                    Classes.following="{Binding IsFollowing, ElementName=Root}" />
+                            <Button Classes="SecondaryBtn"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    Command="{Binding MessageCommand, ElementName=Root}"
+                                    Classes.sent="{Binding IsMessageSent, ElementName=Root}" />
+                        </Grid>
+                    </StackPanel>
+                </Panel>
+            </Border>
+        </Border>
+    </Border>
+</UserControl>

@@ -23,5 +23,8 @@
         <DataTemplate DataType="{x:Type vm:PasswordStrengthMeterPageViewModel}">
             <views:PasswordStrengthMeterPageView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:GlassProfileCardPageViewModel}">
+            <views:GlassProfileCardPageView />
+        </DataTemplate>
     </Application.DataTemplates>
 </Application>

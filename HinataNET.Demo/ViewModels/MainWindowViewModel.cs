@@ -10,7 +10,8 @@ namespace HinataNET.Demo.ViewModels
             new GlassAuthPageViewModel(),
             new ExpandingSearchBarPageViewModel(),
             new SlideToActionPageViewModel(),
-            new PasswordStrengthMeterPageViewModel()
+            new PasswordStrengthMeterPageViewModel(),
+            new GlassProfileCardPageViewModel()
         };
 
         [ObservableProperty]

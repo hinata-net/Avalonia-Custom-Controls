@@ -15,6 +15,7 @@ Currently, the library includes:
 * **Expandable Search Bar** — A sleek, minimalist search component with a smooth expanding animation and auto-focus handling.
 * **Slide-to-Action** — A custom slider for confirming critical actions.
 * **Password Strength Meter** — A dynamic password input field with a real-time visual strength indicator, a reveal/hide toggle, and customizable validation rules (minimum length, digits, uppercase, special characters).
+* **Glass Profile Card** — A sleek, interactive user profile component with a frosted glass aesthetic, featuring fully exposed StyledProperty attributes and MVVM-ready command binding for all actions.
 
 *(The list is growing. New controls are released weekly).*
 

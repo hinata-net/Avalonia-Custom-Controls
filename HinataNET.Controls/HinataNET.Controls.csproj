@@ -10,4 +10,10 @@
 		<PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.4" />
 		<PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.4" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="GlassProfileCard.axaml.cs">
+	    <DependentUpon>GlassProfileCard.axaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
 </Project>
