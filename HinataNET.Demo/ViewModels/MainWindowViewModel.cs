@@ -11,7 +11,8 @@ namespace HinataNET.Demo.ViewModels
             new ExpandingSearchBarPageViewModel(),
             new SlideToActionPageViewModel(),
             new PasswordStrengthMeterPageViewModel(),
-            new GlassProfileCardPageViewModel()
+            new GlassProfileCardPageViewModel(),
+            new MagneticEffectPageViewModel()
         };
 
         [ObservableProperty]

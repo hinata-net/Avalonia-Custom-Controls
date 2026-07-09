@@ -28,5 +28,8 @@
     <Compile Update="Views\GlassProfileCardPageView.axaml.cs">
       <DependentUpon>GlassProfileCardPageView.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\MagneticEffectPageView.axaml.cs">
+      <DependentUpon>MagneticEffectPageView.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -16,6 +16,7 @@ Currently, the library includes:
 * **Slide-to-Action** — A custom slider for confirming critical actions.
 * **Password Strength Meter** — A dynamic password input field with a real-time visual strength indicator, a reveal/hide toggle, and customizable validation rules (minimum length, digits, uppercase, special characters).
 * **Glass Profile Card** — A sleek, interactive user profile component with a frosted glass aesthetic, featuring fully exposed StyledProperty attributes and MVVM-ready command binding for all actions.
+* **Magnetic Effect** — A non-invasive attached property that adds a smooth, customizable magnetic pull to any existing UI control based on cursor proximity. Perfect for interactive FABs, sticky toolbars, and parallax depth illusions.
 
 *(The list is growing. New controls are released weekly).*
 

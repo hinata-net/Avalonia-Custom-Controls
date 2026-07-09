@@ -26,5 +26,8 @@
         <DataTemplate DataType="{x:Type vm:GlassProfileCardPageViewModel}">
             <views:GlassProfileCardPageView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MagneticEffectPageViewModel}">
+            <views:MagneticEffectPageView />
+        </DataTemplate>
     </Application.DataTemplates>
 </Application>

@@ -1,0 +1,168 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="HinataNET.Demo.Views.MagneticEffectPageView"
+             xmlns:controls="using:HinataNET.Controls"
+             ClipToBounds="False"
+             d:DesignWidth="1100"
+             d:DesignHeight="600"
+             mc:Ignorable="d">
+
+    <Panel ClipToBounds="True">
+
+        <Panel.Background>
+            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                <GradientStop Offset="0" Color="#0F172A" />
+                <GradientStop Offset="1" Color="#020617" />
+            </LinearGradientBrush>
+        </Panel.Background>
+
+        <Panel Opacity="0.05" IsHitTestVisible="False">
+            <Panel.Background>
+                <VisualBrush TileMode="Tile"
+                             SourceRect="0,0,40,40"
+                             DestinationRect="0,0,40,40">
+                    <VisualBrush.Visual>
+                        <Ellipse Width="2"
+                                 Height="2"
+                                 Margin="19"
+                                 Fill="White" />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Panel.Background>
+        </Panel>
+
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="70">
+
+            <StackPanel Spacing="8">
+                <TextBlock HorizontalAlignment="Center"
+                           Foreground="White"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Text="Magnetic UI &amp; UX" />
+                <TextBlock HorizontalAlignment="Center"
+                           Foreground="#80FFFFFF"
+                           FontSize="14"
+                           Text="Discover how to use physics to improve hitboxes and tactile feedback in Avalonia apps." />
+            </StackPanel>
+
+            <WrapPanel Margin="0,20,0,0"
+                       HorizontalAlignment="Center"
+                       LineSpacing="40"
+                       ItemWidth="320">
+
+                <StackPanel Spacing="24">
+                    <Button Padding="32,12"
+                            HorizontalAlignment="Center"
+                            Background="#4F46E5"
+                            Foreground="White"
+                            CornerRadius="12"
+                            FontWeight="Bold"
+                            Content="Submit Data"
+                            controls:MagneticEffect.IsActive="True"
+                            controls:MagneticEffect.Radius="150"
+                            controls:MagneticEffect.Pull="0.25"
+                            Cursor="Hand" />
+
+                    <StackPanel Spacing="6">
+                        <TextBlock HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   FontWeight="SemiBold"
+                                   Text="Primary Action" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   Foreground="#60FFFFFF"
+                                   FontSize="12"
+                                   Text="Radius: 150 | Pull: 0.25" />
+                        <TextBlock Width="260"
+                                   HorizontalAlignment="Center"
+                                   Foreground="#40FFFFFF"
+                                   FontSize="12"
+                                   Text="Expands the hit area. The cursor naturally snaps to the target without precise aiming."
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Spacing="24">
+                    <Button Width="64"
+                            Height="64"
+                            HorizontalAlignment="Center"
+                            Background="#1E293B"
+                            BorderBrush="#334155"
+                            BorderThickness="1"
+                            CornerRadius="32"
+                            controls:MagneticEffect.IsActive="True"
+                            controls:MagneticEffect.Radius="90"
+                            controls:MagneticEffect.Pull="0.85"
+                            Cursor="Hand">
+
+                        <PathIcon Width="24"
+                                  Height="24"
+                                  Foreground="#F8FAFC"
+                                  Data="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                    </Button>
+
+                    <StackPanel Spacing="6">
+                        <TextBlock HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   FontWeight="SemiBold"
+                                   Text="Floating Action (FAB)" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   Foreground="#60FFFFFF"
+                                   FontSize="12"
+                                   Text="Radius: 90 | Pull: 0.85" />
+                        <TextBlock Width="260"
+                                   HorizontalAlignment="Center"
+                                   Foreground="#40FFFFFF"
+                                   FontSize="12"
+                                   Text="High tension, short range. Creates a 'gravity well' that pulls the cursor in instantly."
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Spacing="24">
+                    <Button Width="48"
+                            Height="48"
+                            HorizontalAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="#30FFFFFF"
+                            BorderThickness="1"
+                            CornerRadius="24"
+                            controls:MagneticEffect.IsActive="True"
+                            controls:MagneticEffect.Radius="250"
+                            controls:MagneticEffect.Pull="0.10"
+                            Cursor="Hand">
+
+                        <PathIcon Width="22"
+                                  Height="22"
+                                  Foreground="White"
+                                  Data="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" />
+                    </Button>
+
+                    <StackPanel Spacing="6">
+                        <TextBlock HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   FontWeight="SemiBold"
+                                   Text="Navigation / Parallax" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   Foreground="#60FFFFFF"
+                                   FontSize="12"
+                                   Text="Radius: 250 | Pull: 0.10" />
+                        <TextBlock Width="260"
+                                   HorizontalAlignment="Center"
+                                   Foreground="#40FFFFFF"
+                                   FontSize="12"
+                                   Text="Large radius, weak pull. Creates a smooth 3D parallax depth effect for navigation elements."
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center" />
+                    </StackPanel>
+                </StackPanel>
+
+            </WrapPanel>
+        </StackPanel>
+    </Panel>
+</UserControl>
