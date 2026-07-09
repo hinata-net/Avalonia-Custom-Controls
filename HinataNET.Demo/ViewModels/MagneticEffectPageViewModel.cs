@@ -2,5 +2,5 @@
 
 internal class MagneticEffectPageViewModel : ViewModelBase, IPageViewModel
 {
-    public MagneticEffectPageViewModel() => Title = "Magnetic Button";
+    public MagneticEffectPageViewModel() => Title = "Magnetic Effect";
 }
